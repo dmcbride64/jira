@@ -64,8 +64,8 @@ def run_but_ignore_errors(*args, **kwargs):
 #                FileNotFoundError, OSError):
 #            return None
         except Exception:
-            logger = logging.getLogger(__name__)
-            logger.exception("Unexpected exception")
+#            logger = logging.getLogger(__name__)
+#            logger.exception("Unexpected exception")
             return None
 
 
