@@ -2051,8 +2051,8 @@ class JIRA(object):
         url = self._options['server'] + uri
         
         data = {
-            'self': url
-            'id': versionId
+            'self': url,
+            'id': versionId,
             'name': newName}
 
         version = Version(self._options, self._session)
