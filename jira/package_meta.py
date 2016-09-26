@@ -62,7 +62,7 @@ def run_but_ignore_errors(*args, **kwargs):
                                            **kwargs)
 #        except (subprocess.SubprocessError,
 #                FileNotFoundError, OSError):
-            return None
+#            return None
         except Exception:
             logger = logging.getLogger(__name__)
             logger.exception("Unexpected exception")
