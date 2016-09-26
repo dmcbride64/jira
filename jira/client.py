@@ -2012,6 +2012,53 @@ class JIRA(object):
         version = Version(self._options, self._session, raw=json_loads(r))
         return version
 
+    # my stuff    
+    '''
+    {
+        "self": "http://www.example.com/jira/rest/api/2/version/10000",
+        "id": "10000",
+        "description": "An excellent version",
+        "name": "New Version 1",
+        "archived": false,
+        "released": true,
+        "releaseDate": "2010-07-06",
+        "overdue": true,
+        "userReleaseDate": "6/Jul/2010",
+        "projectId": 10000
+    }
+    
+        uri = '/rest/api/2/project/%s' % pid
+        url = self._options['server'] + uri
+    '''
+    #def update_version(self, versionId, newName, description=None, releaseDate=None, archived=False, 
+    #                   released=False, releaseDate=None, overdue=False, userReleaseDate=None):
+    def update_version(self, versionId, newName):
+        """
+        Update a version in a project and return a Resource for it.
+
+        :param versionId: version ID
+        :param newName: new name for the version
+        :param description: a description of the version
+        :param archived: TBD
+        :param released: TBD
+        :param releaseDate: the release date assigned to the version
+        :param overdue: TBD
+        :userReleaseDate: TBD
+        :projectId: JIRA Project ID
+        """
+        
+        uri = '/rest/api/2/version/%s' % versionId
+        url = self._options['server'] + uri
+        
+        data = {
+            'self': url
+            'id': versionId
+            'name': newName}
+
+        version = Version(self._options, self._session)
+        version.update(self, data)
+        return version
+
     def move_version(self, id, after=None, position=None):
         """
         Move a version within a project's ordered version list and return a new version Resource for it. One,
